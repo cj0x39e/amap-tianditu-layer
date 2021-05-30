@@ -38,7 +38,7 @@ const map = new AMap.Map("container", {
   zoom: 3,
 });
 
-const tianDiTuLayer = AMapTianDiTuLayer.init({
+const tianDiTuLayer = AMapTianDiTuLayer({
   map: map,
   url:
     "http://t{0,1,2,3}.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=你的key",
@@ -48,17 +48,30 @@ const tianDiTuLayer = AMapTianDiTuLayer.init({
 map.add(tianDiTuLayer);
 ```
 
-#### CDN 方式
+### 配置项
+
+| 属性 | 类型     | 说明         |
+| ---- | -------- | ------------ |
+| url  | string   | 天地图地址   |
+| map  | Amap.Map | 高德地图实例 |
+
+另外  Amap.Customlayer 构造函数支持的配置项也通过该配置对象传入，AMapTianDiTuLayer  函数的返回值为 Amap.Customlayer 的实例。
+
+Amap.Customlayer 可配置项及其实例方法方法见高德 Customlayer 的文档  https://lbs.amap.com/api/javascript-api/reference/self-own-layers#customlayer 
+
+url 的配置说明：
+
+- 支持 http://t{0,1,2,3}.tianditu.gov.cn 方式配置子域名，花括号中的子域名将随机获取
+- x , y, z 延续高德的解析风格，使用` [x]` 中括号形式占位。
 
 ### TODO
 
-- 高德地图 v2 版本测试
-- 渲染逻辑优化使之更流畅
-- 完善测试用例
+	- [ ] 高德地图 v2 版本测试
+	- [ ] 渲染逻辑优化使之更流畅
+	- [ ] 完善测试用例
 
 ### 致谢
 
 1. [gcoord](https://github.com/hujiulong/gcoord) ，该库提供了坐标系转换算法。
 2. [leafletjs](https://leafletjs.com/) ，本插件的渲染过程，思路完全借鉴 leafletjs。
-
-以及网络上众多 GIS 技术相关的博客，不一一列举了。
+3. 以及网络上众多 GIS 技术相关的博客，不一一列举了。

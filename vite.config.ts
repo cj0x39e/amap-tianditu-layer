@@ -9,10 +9,5 @@ export default defineConfig({
       name: "AMapTianDiTuLayer",
       formats: ["es", "umd"],
     },
-    rollupOptions: {
-      output: {
-        exports: "named",
-      },
-    },
   },
 });
