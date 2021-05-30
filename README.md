@@ -34,18 +34,39 @@ npm i amap-tianditu-layer -S
 import AMapTianDiTuLayer from "amap-tianditu-layer";
 
 const map = new AMap.Map("container", {
-  center: [117.000923, 36.675807],
+  center: [112.936419, 28.18356],
   zoom: 3,
 });
 
 const tianDiTuLayer = AMapTianDiTuLayer({
   map: map,
   url:
-    "http://t{0,1,2,3}.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=你的key",
+    "http://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=你的key",
   zIndex: 2,
 });
 
 map.add(tianDiTuLayer);
+```
+
+#### cdn 方式
+
+```html
+<script src="https://webapi.amap.com/maps?v=1.4.15&key=你的key"></script>
+<script src="https://cdn.jsdelivr.net/npm/amap-tianditu-layer@0.0.1/dist/amap-tianditu-layer.umd.js"></script>
+
+<script>
+  var map = new AMap.Map("container", {
+    center: [117.000923, 36.675807],
+  });
+  var tianDiTuLayer = AMapTianDiTuLayer({
+    map: map,
+    url:
+      "http://t{0,1,2,3}.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=你的key",
+    zIndex: 2,
+  });
+
+  map.add(tianDiTuLayer);
+</script>
 ```
 
 ### 配置项
@@ -55,9 +76,9 @@ map.add(tianDiTuLayer);
 | url  | string   | 天地图地址   |
 | map  | Amap.Map | 高德地图实例 |
 
-另外  Amap.Customlayer 构造函数支持的配置项也通过该配置对象传入，AMapTianDiTuLayer  函数的返回值为 Amap.Customlayer 的实例。
+另外 Amap.Customlayer 构造函数支持的配置项也通过该配置对象传入，AMapTianDiTuLayer 函数的返回值为 Amap.Customlayer 的实例。
 
-Amap.Customlayer 可配置项及其实例方法见高德 Customlayer 的文档  https://lbs.amap.com/api/javascript-api/reference/self-own-layers#customlayer 
+Amap.Customlayer 可配置项及其实例方法见高德 Customlayer 的文档 https://lbs.amap.com/api/javascript-api/reference/self-own-layers#customlayer
 
 url 的配置说明：
 

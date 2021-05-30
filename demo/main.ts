@@ -8,7 +8,7 @@ const layer = new AMap.TileLayer({
   zIndex: 0, //叠加层级
 });
 const map = new AMap.Map("container", {
-  center: [117.000923, 36.675807],
+  center: [112.936419, 28.18356],
   zoom: 3,
   layers: [layer],
 });
