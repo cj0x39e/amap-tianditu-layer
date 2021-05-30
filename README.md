@@ -57,7 +57,7 @@ map.add(tianDiTuLayer);
 
 另外  Amap.Customlayer 构造函数支持的配置项也通过该配置对象传入，AMapTianDiTuLayer  函数的返回值为 Amap.Customlayer 的实例。
 
-Amap.Customlayer 可配置项及其实例方法方法见高德 Customlayer 的文档  https://lbs.amap.com/api/javascript-api/reference/self-own-layers#customlayer 
+Amap.Customlayer 可配置项及其实例方法见高德 Customlayer 的文档  https://lbs.amap.com/api/javascript-api/reference/self-own-layers#customlayer 
 
 url 的配置说明：
 
