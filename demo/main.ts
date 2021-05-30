@@ -1,4 +1,4 @@
-import AMapTianDiTuLayer from "../lib/index";
+import AMapTianDiTuLayer from "../src/index";
 import "./style.css";
 
 const layer = new AMap.TileLayer({
@@ -16,7 +16,7 @@ const map = new AMap.Map("container", {
 const tianDiTuLayer = AMapTianDiTuLayer({
   map: map,
   url:
-    "http://t0.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=5ea255f17355f877501306a82bf476b2",
+    "http://t{0,1,2,3}.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=5ea255f17355f877501306a82bf476b2",
   zIndex: 2,
 });
 

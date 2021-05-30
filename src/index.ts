@@ -1,11 +1,11 @@
-import gcoord from "gcoord";
+import { GCJ02ToWGS84 } from "gcoord/src/crs/GCJ02";
 import { Point, Tile, Options } from "./types";
 import { TILE_SIZE } from "./const";
 import * as point from "./point";
 import * as bounds from "./bounds";
 import { render } from "./render";
 
-export const getTileQueue = (
+const getTileQueue = (
   center: Point,
   level: number,
   viewWidth: number,
@@ -60,7 +60,12 @@ export const getTileQueue = (
   return queue;
 };
 
-export default (options: Options): AMap.CustomLayer => {
+/**
+ * 初始化天地图图层
+ * @param options
+ * @param options.url 地址
+ */
+const init = (options: Options): AMap.CustomLayer => {
   const map = options.map;
   // 由于高德定义的参数类型为 canvas ，但实际上他既支持 canvas 也支持 dom
   // 所以这里强制转换一下
@@ -82,11 +87,10 @@ export default (options: Options): AMap.CustomLayer => {
     renderId.current += 1;
     const centerGeoPointData = map.getCenter();
 
-    const centerGeoPoint = gcoord.transform(
-      [centerGeoPointData.lng, centerGeoPointData.lat],
-      gcoord.GCJ02,
-      gcoord.WGS84
-    );
+    const centerGeoPoint = GCJ02ToWGS84([
+      centerGeoPointData.lng,
+      centerGeoPointData.lat,
+    ]);
 
     const level = map.getZoom();
     const mapSize = map.getSize();
@@ -105,3 +109,5 @@ export default (options: Options): AMap.CustomLayer => {
 
   return customerLayer;
 };
+
+export default init;

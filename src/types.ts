@@ -1,4 +1,4 @@
-// import "@amap/amap-jsapi-types";
+import "@amap/amap-jsapi-types";
 
 export type Point = {
   x: number;
@@ -16,10 +16,9 @@ export type Bounds = {
   max: Point;
 };
 
-export type TileImage = HTMLImageElement & { __renderId: undefined | number };
-
 export type Options = Omit<AMap.CustomLayerOption, "render"> & {
   url: string;
-  cacheSize?: number;
   map: AMap.Map;
 };
+
+export type TileImage = HTMLImageElement & { __renderId: undefined | number };

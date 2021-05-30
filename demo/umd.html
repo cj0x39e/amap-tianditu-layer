@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>amap-tianditu-layer</title>
+  <script src="https://webapi.amap.com/maps?v=1.4.15&key=1565b7b168651ccaa44f51956ff7fc77"></script>
+  <script src="/amap-tianditu-layer.iife.js"></script>
+  <style>
+    * {
+      margin: 0;
+    }
+
+    #container {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="container"></div>
+  <script>
+    var map = new AMap.Map("container", {
+      center: [117.000923, 36.675807],
+    });
+    var tianDiTuLayer = AMapTianDiTuLayer.default({
+      map: map,
+      url:
+        "http://t{0,1,2,3}.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=5ea255f17355f877501306a82bf476b2",
+      zIndex: 2,
+    });
+
+    map.add(tianDiTuLayer);
+  </script>
+</body>
+
+</html>
