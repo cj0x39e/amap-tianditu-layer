@@ -71,10 +71,11 @@ map.add(tianDiTuLayer);
 
 ### 配置项
 
-| 属性 | 类型     | 说明         |
-| ---- | -------- | ------------ |
-| url  | string   | 天地图地址   |
-| map  | Amap.Map | 高德地图实例 |
+| 属性      | 类型     | 说明                          |
+| --------- | -------- | ----------------------------- |
+| url       | string   | 天地图地址                    |
+| map       | Amap.Map | 高德地图实例                  |
+| cacheSize | number   | 内存中缓存图片的个数, 默认 50 |
 
 另外 Amap.Customlayer 构造函数支持的配置项也通过该配置对象传入，AMapTianDiTuLayer 函数的返回值为 Amap.Customlayer 的实例。
 

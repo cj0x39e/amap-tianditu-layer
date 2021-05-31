@@ -5,7 +5,7 @@ type CacheItem<T> = { key: string; data: T };
  * @param cacheMax 最大缓存数量
  * @returns
  */
-export const getCacheStore = <T = unknown>(cacheMax = 100) => {
+export const getCacheStore = <T = unknown>(cacheMax = 50) => {
   const cacheList: CacheItem<T>[] = [];
   const cacheMap: { [key: string]: number } = {};
   let deleteCount = 0;

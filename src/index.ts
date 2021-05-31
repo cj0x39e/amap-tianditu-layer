@@ -1,5 +1,6 @@
 import { GCJ02ToWGS84 } from "gcoord/src/crs/GCJ02";
-import { Point, Tile, Options } from "./types";
+import { Point, Tile, Options, TileImage } from "./types";
+import { getCacheStore } from "./cacheStore";
 import { TILE_SIZE } from "./const";
 import * as point from "./point";
 import * as bounds from "./bounds";
@@ -69,10 +70,15 @@ const init = (options: Options): AMap.CustomLayer => {
   const map = options.map;
   // 由于高德定义的参数类型为 canvas ，但实际上他既支持 canvas 也支持 dom
   // 所以这里强制转换一下
-  const canvas: HTMLCanvasElement = document.createElement("div") as any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const canvas = document.createElement("canvas");
+  const canvasContext = canvas.getContext("2d");
   const mapSize = map.getSize();
-  canvas.style.width = mapSize.width + "px";
-  canvas.style.height = mapSize.height + "px";
+  const cacheStore = getCacheStore<TileImage>(options.cacheSize);
+  const width = mapSize.width;
+  const height = mapSize.height;
+  canvas.width = width;
+  canvas.height = height;
 
   const customerLayer = new AMap.CustomLayer(canvas, {
     ...options,
@@ -82,7 +88,7 @@ const init = (options: Options): AMap.CustomLayer => {
     },
   }) as AMap.CustomLayer & { render: () => void };
 
-  let renderId = { current: 1 };
+  const renderId = { current: 1 };
   customerLayer.render = () => {
     renderId.current += 1;
     const centerGeoPointData = map.getCenter();
@@ -104,7 +110,16 @@ const init = (options: Options): AMap.CustomLayer => {
       viewHeight
     );
 
-    render(tileQueue, canvas, options.url, renderId);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    render(
+      tileQueue,
+      canvasContext!,
+      options.url,
+      renderId,
+      cacheStore,
+      width,
+      height
+    );
   };
 
   return customerLayer;
