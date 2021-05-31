@@ -22,7 +22,7 @@ export type Options = Omit<AMap.CustomLayerOption, "render"> & {
   // 高德地图实例
   map: AMap.Map;
   // 缓存图片大小,默认 50
-  cacheSize: number;
+  cacheSize?: number;
 };
 
 export type TileImage = HTMLImageElement & { __renderId: undefined | number };
