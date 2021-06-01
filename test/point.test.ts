@@ -6,8 +6,8 @@ import {
   subtract,
   add,
   pixelPointToTilePoint,
-} from "../lib/point";
-import { TILE_SIZE } from "../lib/const";
+} from "../src/point";
+import { TILE_SIZE } from "../src/const";
 
 test("toPoint test", () => {
   expect(toPoint(1, 1)).toEqual({ x: 1, y: 1 });

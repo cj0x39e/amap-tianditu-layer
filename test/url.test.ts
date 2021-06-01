@@ -1,10 +1,10 @@
-import { Tile } from "../lib/types";
+import { Tile } from "../src/types";
 import {
   getDomainList,
   getRandomDomainUrl,
   getTileUrl,
   parseUrl,
-} from "../lib/url";
+} from "../src/url";
 
 const u1 = "https://{1,2,3}.test?[x][y][z]";
 const u2 = "https://4.test?x=[x]&y=[y]&z=[z]";

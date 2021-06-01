@@ -1,4 +1,4 @@
-import { getCacheStore } from "../lib/cacheStore";
+import { getCacheStore } from "../src/cacheStore";
 
 let cacheStore: ReturnType<typeof getCacheStore>;
 let cacheKey = "test-key";

@@ -68,9 +68,7 @@ const getTileQueue = (
  */
 const init = (options: Options): AMap.CustomLayer => {
   const map = options.map;
-  // 由于高德定义的参数类型为 canvas ，但实际上他既支持 canvas 也支持 dom
-  // 所以这里强制转换一下
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   const canvas = document.createElement("canvas");
   const canvasContext = canvas.getContext("2d");
   const mapSize = map.getSize();
