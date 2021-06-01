@@ -52,7 +52,7 @@ map.add(tianDiTuLayer);
 
 ```html
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=你的key"></script>
-<script src="https://cdn.jsdelivr.net/npm/amap-tianditu-layer@0.0.1/dist/amap-tianditu-layer.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/amap-tianditu-layer@0.0.2/dist/amap-tianditu-layer.umd.js"></script>
 
 <script>
   var map = new AMap.Map("container", {
