@@ -85,9 +85,7 @@ const init = (options: Options): AMap.CustomLayer => {
     },
   }) as AMap.CustomLayer & { render: () => void };
 
-  const renderId = { current: 1 };
   customerLayer.render = () => {
-    renderId.current += 1;
     const centerGeoPointData = map.getCenter();
 
     const centerGeoPoint = GCJ02ToWGS84([
