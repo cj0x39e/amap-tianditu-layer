@@ -6,6 +6,7 @@ import { Tile } from "./types";
  * @returns
  */
 export const getDomainList = (url: string) => {
+  // eslint-disable-next-line @typescript-eslint/prefer-regexp-exec
   const mathResult = url.match(/\{(.+)\}/);
   const subDomainStr = mathResult !== null ? mathResult[1] || "" : "";
   const subDomainList = subDomainStr !== "" ? subDomainStr.split(",") : [];

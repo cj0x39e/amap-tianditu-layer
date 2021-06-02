@@ -6,3 +6,9 @@ export const MAX_LATITUDE = 85.0511287798;
 
 // 地球半径
 export const R = 6378137;
+
+// 渲染类型
+export enum RenderType {
+  canvas = "canvas",
+  dom = "dom",
+}

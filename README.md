@@ -52,7 +52,7 @@ map.add(tianDiTuLayer);
 
 ```html
 <script src="https://webapi.amap.com/maps?v=1.4.15&key=你的key"></script>
-<script src="https://cdn.jsdelivr.net/npm/amap-tianditu-layer@0.0.2/dist/amap-tianditu-layer.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/amap-tianditu-layer@0.1.0/dist/amap-tianditu-layer.umd.js"></script>
 
 <script>
   var map = new AMap.Map("container", {
@@ -71,11 +71,12 @@ map.add(tianDiTuLayer);
 
 ### 配置项
 
-| 属性      | 类型     | 说明                          |
-| --------- | -------- | ----------------------------- |
-| url       | string   | 天地图地址                    |
-| map       | Amap.Map | 高德地图实例                  |
-| cacheSize | number   | 内存中缓存图片的个数, 默认 50 |
+| 属性       | 类型              | 说明                                                    |
+| ---------- | ----------------- | ------------------------------------------------------- |
+| url        | string            | 天地图地址                                              |
+| map        | Amap.Map          | 高德地图实例                                            |
+| renderType | 'canvas' \| 'dom' | 渲染方式，默认为 dom                                    |
+| cacheSize  | number            | 渲染方式为 canvas 时支持，内存中缓存图片的个数, 默认 50 |
 
 另外 Amap.Customlayer 构造函数支持的配置项也通过该配置对象传入，AMapTianDiTuLayer 函数的返回值为 Amap.Customlayer 的实例。
 

@@ -18,6 +18,7 @@ const tianDiTuLayer = AMapTianDiTuLayer({
   url:
     "http://t{0,1,2,3}.tianditu.gov.cn/img_w/wmts?SERVICE=WMTS&REQUEST=GetTile&VERSION=1.0.0&LAYER=img&STYLE=default&TILEMATRIXSET=w&FORMAT=tiles&TILEMATRIX=[z]&TILEROW=[y]&TILECOL=[x]&tk=5ea255f17355f877501306a82bf476b2",
   zIndex: 2,
+  // renderType: "canvas",
 });
 
 map.add(tianDiTuLayer);

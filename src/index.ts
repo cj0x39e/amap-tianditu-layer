@@ -1,10 +1,10 @@
 import { GCJ02ToWGS84 } from "gcoord/src/crs/GCJ02";
-import { Point, Tile, Options, TileImage } from "./types";
-import { getCacheStore } from "./cacheStore";
-import { TILE_SIZE } from "./const";
+import { Point, Tile, Options } from "./types";
+import { TILE_SIZE, RenderType } from "./const";
 import * as point from "./point";
 import * as bounds from "./bounds";
-import { render } from "./render";
+import { getRender as domRender } from "./domRender";
+import { getRender as canvasRender } from "./canvasRender";
 
 const getTileQueue = (
   center: Point,
@@ -68,17 +68,16 @@ const getTileQueue = (
  */
 const init = (options: Options): AMap.CustomLayer => {
   const map = options.map;
-
-  const canvas = document.createElement("canvas");
-  const canvasContext = canvas.getContext("2d");
   const mapSize = map.getSize();
-  const cacheStore = getCacheStore<TileImage>(options.cacheSize);
-  const width = mapSize.width;
-  const height = mapSize.height;
-  canvas.width = width;
-  canvas.height = height;
-
-  const customerLayer = new AMap.CustomLayer(canvas, {
+  const getRender =
+    options.renderType === RenderType.canvas ? canvasRender : domRender;
+  const { container, render } = getRender(
+    options.url,
+    mapSize.width,
+    mapSize.height,
+    options.cacheSize
+  );
+  const customerLayer = new AMap.CustomLayer(container, {
     ...options,
     // 该 render 函数无实际作用，仅仅是为了修复 TS 报错
     render: () => {
@@ -108,16 +107,7 @@ const init = (options: Options): AMap.CustomLayer => {
       viewHeight
     );
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    render(
-      tileQueue,
-      canvasContext!,
-      options.url,
-      renderId,
-      cacheStore,
-      width,
-      height
-    );
+    render(tileQueue);
   };
 
   return customerLayer;
