@@ -1,8 +1,8 @@
 import { getCacheStore } from "../src/cacheStore";
 
 let cacheStore: ReturnType<typeof getCacheStore>;
-let cacheKey = "test-key";
-let cacheItem = { name: "cj0x39e" };
+const cacheKey = "test-key";
+const cacheItem = { name: "cj0x39e" };
 
 beforeEach(() => {
   cacheStore = getCacheStore(2);

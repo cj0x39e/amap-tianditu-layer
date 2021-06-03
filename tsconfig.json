@@ -11,5 +11,5 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true
   },
-  "include": ["./src", "demo/main.ts", "demo/vite-env.d.ts"]
+  "include": ["./src/**/*", "./test/**/*", "./types/**/*", "./demo/**/*"]
 }
